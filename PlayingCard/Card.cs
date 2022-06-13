@@ -5,11 +5,6 @@
         private int rank;
         private int suit;
 
-        public Card()
-        {
-
-        }
-
         public Card(int rank, int suit)
         {
             this.rank = rank;
@@ -20,7 +15,15 @@
 
         public int Suit { get; set; }
 
-        public int Image { get; set; }
+        public string FileName
+        { 
+            get
+            {
+                return $@"..\..\cards\{rank}.{suit}.png";
+            }
+        }
+
+
 
     }
 }

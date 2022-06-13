@@ -17,19 +17,23 @@ namespace PlayingCard
             InitializeComponent();
         }
 
-        Graphics grp;
-        Bitmap bmp;
-        Random rnd;
+        Deck deck;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            grp = Graphics.FromImage(bmp);
-            rnd = new Random();
-            Card a = new Card();
-            Card b = new Card(rnd.Next(13), rnd.Next(4));
+            deck = new Deck();
+            pictureBox1.Image = Image.FromFile(@"..\..\back.PNG");
+        }
 
-            pictureBox1.Image = bmp;
+        private void buttonNextCard_Click(object sender, EventArgs e)
+        {
+            Card a = deck.NextCard();
+            pictureBox2.Image = Image.FromFile(a.FileName);
+        }
+
+        private void buttonShuffle_Click(object sender, EventArgs e)
+        {
+            deck.Shuffle();
         }
     }
 }
